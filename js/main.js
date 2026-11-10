@@ -45,8 +45,8 @@
   }
   if (dnyEl) { aktualizuj(); setInterval(aktualizuj, 60000); }
 
-  // Přepínání designu: tyrkysový (výchozí) × červený v barvách PcObchodu.
-  // Volba se pamatuje v prohlížeči a promítne se do adresy (?design=cervena), takže jde poslat odkazem.
+  // Přepínání designu: červený v barvách PcObchodu (výchozí) × tyrkysový.
+  // Volba se pamatuje v prohlížeči a promítne se do adresy (?design=tyrkys), takže jde poslat odkazem.
   var DESIGNY = {
     tyrkys: { dalsi: "cervena", popisek: "Červený design", ikona: "img/favicon.svg", barva: "#14213D" },
     cervena: { dalsi: "tyrkys", popisek: "Tyrkysový design", ikona: "img/favicon-cervena.svg", barva: "#14141A" }
@@ -66,10 +66,10 @@
     var barva = document.getElementById("barva-motivu");
     if (barva) barva.setAttribute("content", nast.barva);
     if (ulozit) {
-      try { localStorage.setItem("eet-design", d); } catch (e) { /* bez úložiště prostě nepamatujeme */ }
+      try { localStorage.setItem("eet-design-v2", d); } catch (e) { /* bez úložiště prostě nepamatujeme */ }
       try {
         var url = new URL(location.href);
-        if (d === "tyrkys") url.searchParams.delete("design"); else url.searchParams.set("design", d);
+        if (d === "cervena") url.searchParams.delete("design"); else url.searchParams.set("design", d);
         history.replaceState(null, "", url.pathname + url.search + url.hash);
       } catch (e) { /* starší prohlížeč */ }
     }

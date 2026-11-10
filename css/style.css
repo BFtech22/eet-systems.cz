@@ -242,7 +242,7 @@ p { margin: 0 0 1em; }
 .cisla span { color: rgba(255, 255, 255, .7); font-size: .92rem; }
 .onas__foto { display: grid; gap: 16px; }
 .onas__foto figure { margin: 0; position: relative; border-radius: var(--r); overflow: hidden; }
-.onas__foto img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.onas__foto img { width: 100%; height: auto; display: block; }  /* celé fotky bez ořezu */
 .onas__foto figcaption { position: absolute; left: 14px; bottom: 12px; background: rgba(20, 33, 61, .85); padding: 4px 12px; border-radius: 999px; font-weight: 600; font-size: .9rem; }
 
 /* otázky */
@@ -356,28 +356,34 @@ p { margin: 0 0 1em; }
 .cenik-nastaveni .fajfky { margin-bottom: 10px; gap: 8px; }
 .cenik-nastaveni .fajfky li { color: rgba(255, 255, 255, .88); }
 .cenik-nastaveni .pozn { margin: 0; font-size: .86rem; color: rgba(255, 255, 255, .62); }
-.pokladny { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-.pokladna { background: #fff; border-radius: var(--r); box-shadow: var(--stin); padding: 24px 22px; display: flex; flex-direction: column; gap: 12px; }
-.pokladna__hlava { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-.pokladna__hlava h3 { margin: 0; font-size: 1.4rem; }
+.pokladny { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: auto; column-gap: 18px; row-gap: 0; }
+/* karty sdílí řádky (subgrid), takže nadpisy, seznamy i ceny jsou ve stejné výšce */
+.pokladna { grid-row: span 4; display: grid; grid-template-rows: subgrid; row-gap: 0; background: #fff; border-radius: var(--r); box-shadow: var(--stin); overflow: hidden; }
+.pokladna > * { padding-left: 24px; padding-right: 24px; }
+.pokladna__hlava { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding-top: 22px; }
+.pokladna__hlava h3 { margin: 0; font-size: 1.45rem; }
 .znacka { font-size: .74rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--teal-pozadi); color: var(--teal-text); white-space: nowrap; }
 .znacka--zdarma { background: #E3F6EA; color: #16794A; }
-.pokladna__kdo { margin: 0; font-size: .97rem; line-height: 1.45; }
-.pokladna dl { margin: 0; display: grid; gap: 3px; }
-.pokladna dt { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--teal-text); }
-.pokladna dd { margin: 0 0 8px; font-size: .9rem; color: var(--sedy); line-height: 1.45; }
-.pokladna__cena { margin-top: auto; border-top: 1px solid var(--linka); padding-top: 14px; display: grid; gap: 2px; }
-.pokladna__cena b { font-size: 1.6rem; font-weight: 750; color: var(--navy); line-height: 1.15; }
-.pokladna__cena span { font-weight: 600; font-size: .9rem; color: var(--teal-text); }
-.pokladna__cena small { font-size: .82rem; color: var(--sedy); }
+.pokladna__kdo { margin: 10px 0 0; font-size: 1rem; line-height: 1.45; color: var(--ink); }
+.pokladna__seznam { list-style: none; margin: 18px 0 22px; display: grid; gap: 10px; align-content: start; }
+.pokladna__seznam li { position: relative; padding-left: 28px; font-size: .95rem; line-height: 1.4; color: #2D3B4F; }
+.pokladna__seznam li::before { content: ""; position: absolute; left: 0; top: 1px; width: 19px; height: 19px; border-radius: 50%; background: var(--teal-pozadi) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.2l3 3 6-6.4' fill='none' stroke='%230B7C87' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/19px no-repeat; }
+.pokladna__seznam li.minus { color: var(--sedy); }
+.pokladna__seznam li.minus::before { background: #EEF1F4 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10h8' fill='none' stroke='%239AA6B2' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") center/19px no-repeat; }
+.pokladna__cena { background: var(--svetle); border-top: 1px solid var(--linka); padding-top: 16px; padding-bottom: 18px; display: grid; gap: 2px; align-content: start; }
+.pokladna__cena b { font-size: 1.65rem; font-weight: 750; color: var(--navy); line-height: 1.15; }
+.pokladna__cena span { font-weight: 650; font-size: .95rem; color: var(--teal-text); }
+.pokladna__cena small { font-size: .8rem; color: var(--sedy); line-height: 1.35; }
 #pokladny .info { margin-top: 26px; }
 @media (max-width: 1020px) {
   .pokladny { grid-template-columns: repeat(2, 1fr); }
+  .pokladna:nth-child(n+3) { margin-top: 18px; }
   .cenik-nastaveni { grid-template-columns: 1fr; gap: 18px; }
   .cenik-nastaveni .tl { justify-self: start; }
 }
 @media (max-width: 600px) {
   .pokladny { grid-template-columns: 1fr; }
+  .pokladna + .pokladna { margin-top: 18px; }
   .cenik-nastaveni { padding: 24px 22px; }
   .cenik-nastaveni__cena b { font-size: 2.6rem; }
 }

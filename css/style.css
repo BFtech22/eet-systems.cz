@@ -343,3 +343,41 @@ p { margin: 0 0 1em; }
   .tecka { animation: none; }
   .tl { transition: none; }
 }
+
+/* ── pokladny a cena nastavení ── */
+.hero__cena { display: inline-flex; align-items: baseline; gap: 8px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .16); padding: 8px 16px; border-radius: 12px; margin: 0 0 18px; color: rgba(255, 255, 255, .8); font-size: .95rem; }
+.hero__cena b { color: var(--teal-svetla); font-size: 1.3rem; }
+.cenik-nastaveni { display: grid; grid-template-columns: 230px 1fr auto; gap: 32px; align-items: center; background: var(--navy); color: #fff; border-radius: var(--r); padding: 30px 34px; margin-bottom: 26px; }
+.cenik-nastaveni__cena { display: grid; gap: 2px; }
+.cenik-nastaveni__cena span { text-transform: uppercase; letter-spacing: .12em; font-size: .78rem; font-weight: 700; color: var(--teal-svetla); }
+.cenik-nastaveni__cena b { font-size: 3.1rem; line-height: 1.05; font-weight: 750; }
+.cenik-nastaveni__cena i { font-style: normal; font-size: .9rem; color: rgba(255, 255, 255, .7); }
+.cenik-nastaveni h3 { font-size: 1.1rem; margin-bottom: 10px; }
+.cenik-nastaveni .fajfky { margin-bottom: 10px; gap: 8px; }
+.cenik-nastaveni .fajfky li { color: rgba(255, 255, 255, .88); }
+.cenik-nastaveni .pozn { margin: 0; font-size: .86rem; color: rgba(255, 255, 255, .62); }
+.pokladny { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.pokladna { background: #fff; border-radius: var(--r); box-shadow: var(--stin); padding: 24px 22px; display: flex; flex-direction: column; gap: 12px; }
+.pokladna__hlava { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.pokladna__hlava h3 { margin: 0; font-size: 1.4rem; }
+.znacka { font-size: .74rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--teal-pozadi); color: var(--teal-text); white-space: nowrap; }
+.znacka--zdarma { background: #E3F6EA; color: #16794A; }
+.pokladna__kdo { margin: 0; font-size: .97rem; line-height: 1.45; }
+.pokladna dl { margin: 0; display: grid; gap: 3px; }
+.pokladna dt { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--teal-text); }
+.pokladna dd { margin: 0 0 8px; font-size: .9rem; color: var(--sedy); line-height: 1.45; }
+.pokladna__cena { margin-top: auto; border-top: 1px solid var(--linka); padding-top: 14px; display: grid; gap: 2px; }
+.pokladna__cena b { font-size: 1.6rem; font-weight: 750; color: var(--navy); line-height: 1.15; }
+.pokladna__cena span { font-weight: 600; font-size: .9rem; color: var(--teal-text); }
+.pokladna__cena small { font-size: .82rem; color: var(--sedy); }
+#pokladny .info { margin-top: 26px; }
+@media (max-width: 1020px) {
+  .pokladny { grid-template-columns: repeat(2, 1fr); }
+  .cenik-nastaveni { grid-template-columns: 1fr; gap: 18px; }
+  .cenik-nastaveni .tl { justify-self: start; }
+}
+@media (max-width: 600px) {
+  .pokladny { grid-template-columns: 1fr; }
+  .cenik-nastaveni { padding: 24px 22px; }
+  .cenik-nastaveni__cena b { font-size: 2.6rem; }
+}

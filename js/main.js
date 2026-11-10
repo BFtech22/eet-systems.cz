@@ -45,43 +45,6 @@
   }
   if (dnyEl) { aktualizuj(); setInterval(aktualizuj, 60000); }
 
-  // Přepínání designu: červený v barvách PcObchodu (výchozí) × tyrkysový.
-  // Volba se pamatuje v prohlížeči a promítne se do adresy (?design=tyrkys), takže jde poslat odkazem.
-  var DESIGNY = {
-    tyrkys: { dalsi: "cervena", popisek: "Červený design", ikona: "img/favicon.svg", barva: "#14213D" },
-    cervena: { dalsi: "tyrkys", popisek: "Tyrkysový design", ikona: "img/favicon-cervena.svg", barva: "#14141A" }
-  };
-  var prepinac = document.getElementById("prepinac-designu");
-  function nastavDesign(d, ulozit) {
-    if (!DESIGNY[d]) d = "tyrkys";
-    var koren = document.documentElement;
-    if (d === "tyrkys") koren.removeAttribute("data-design"); else koren.setAttribute("data-design", d);
-    var nast = DESIGNY[d];
-    if (prepinac) {
-      prepinac.querySelector(".prepinac-designu__text").textContent = nast.popisek;
-      prepinac.setAttribute("aria-label", "Přepnout na " + nast.popisek.toLowerCase());
-    }
-    var ikona = document.getElementById("ikona-webu");
-    if (ikona) ikona.setAttribute("href", nast.ikona);
-    var barva = document.getElementById("barva-motivu");
-    if (barva) barva.setAttribute("content", nast.barva);
-    if (ulozit) {
-      try { localStorage.setItem("eet-design-v2", d); } catch (e) { /* bez úložiště prostě nepamatujeme */ }
-      try {
-        var url = new URL(location.href);
-        if (d === "cervena") url.searchParams.delete("design"); else url.searchParams.set("design", d);
-        history.replaceState(null, "", url.pathname + url.search + url.hash);
-      } catch (e) { /* starší prohlížeč */ }
-    }
-  }
-  nastavDesign(document.documentElement.getAttribute("data-design") || "tyrkys", false);
-  if (prepinac) {
-    prepinac.addEventListener("click", function () {
-      var aktualni = document.documentElement.getAttribute("data-design") || "tyrkys";
-      nastavDesign(DESIGNY[aktualni].dalsi, true);
-    });
-  }
-
   // Rok v patičce
   var rok = document.getElementById("rok");
   if (rok) rok.textContent = new Date().getFullYear();

@@ -350,8 +350,10 @@ p { margin: 0 0 1em; }
 .cenik-nastaveni .pozn { margin: 0; font-size: .86rem; color: rgba(255, 255, 255, .62); }
 .pokladny { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: auto; column-gap: 18px; row-gap: 0; }
 /* karty sdílí řádky (subgrid), takže nadpisy, seznamy i ceny jsou ve stejné výšce */
-.pokladna { grid-row: span 4; display: grid; grid-template-rows: subgrid; row-gap: 0; background: #fff; border-radius: var(--r); box-shadow: var(--stin); overflow: hidden; }
+.pokladna { grid-row: span 5; display: grid; grid-template-rows: subgrid; row-gap: 0; background: #fff; border-radius: var(--r); box-shadow: var(--stin); overflow: hidden; }
 .pokladna > * { padding-left: 24px; padding-right: 24px; }
+.pokladna > .pokladna__obr { padding: 0; margin: 0; aspect-ratio: 16 / 10; background: #fff; border-bottom: 1px solid var(--linka); overflow: hidden; }
+.pokladna__obr img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .pokladna__hlava { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding-top: 22px; }
 .pokladna__hlava h3 { margin: 0; font-size: 1.45rem; }
 .znacka { font-size: .74rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--teal-pozadi); color: var(--teal-text); white-space: nowrap; }

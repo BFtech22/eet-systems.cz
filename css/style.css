@@ -366,6 +366,7 @@ p { margin: 0 0 1em; }
 .pokladna__seznam li.minus::before { background: #EEF1F4 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10h8' fill='none' stroke='%239AA6B2' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") center/19px no-repeat; }
 .pokladna__cena { background: var(--svetle); border-top: 1px solid var(--linka); padding-top: 16px; padding-bottom: 18px; display: grid; gap: 2px; align-content: start; }
 .pokladna__cena b { font-size: 1.65rem; font-weight: 750; color: var(--navy); line-height: 1.15; }
+.pokladna__cena .pokladna__dph { font-style: normal; font-size: .8rem; color: var(--sedy); margin: -2px 0 4px; }
 .pokladna__cena span { font-weight: 650; font-size: .95rem; color: var(--teal-text); }
 .pokladna__cena small { font-size: .8rem; color: var(--sedy); line-height: 1.35; }
 #pokladny .info { margin-top: 26px; }

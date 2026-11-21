@@ -370,6 +370,19 @@ p { margin: 0 0 1em; }
 .pokladna__cena span { font-weight: 650; font-size: .95rem; color: var(--teal-text); }
 .pokladna__cena small { font-size: .8rem; color: var(--sedy); line-height: 1.35; }
 #pokladny .info { margin-top: 26px; }
+.pokladna-tip { margin-top: 22px; display: grid; grid-template-columns: 210px 1fr 250px; gap: 28px; align-items: center; background: #fff; border-radius: var(--r); box-shadow: var(--stin); padding: 20px 28px; }
+.pokladna-tip img { display: block; width: 100%; height: auto; }
+.pokladna-tip h3 { margin: 10px 0 6px; font-size: 1.45rem; }
+.pokladna-tip p { margin: 0 0 14px; color: var(--ink); line-height: 1.45; }
+.pokladna-tip .pokladna__seznam { margin: 0; padding: 0; }
+.pokladna-tip__cena .pokladna__dph { font-style: normal; font-size: .85rem; color: var(--sedy); margin: 0 0 6px; }
+.pokladna-tip__cena { display: grid; gap: 2px; align-content: center; background: var(--svetle); border-radius: 14px; padding: 18px 20px; }
+.pokladna-tip__cena b { font-size: 1.9rem; font-weight: 750; color: var(--navy); line-height: 1.1; }
+.pokladna-tip__cena span { font-weight: 650; font-size: .95rem; color: var(--teal-text); }
+.pokladna-tip__cena small { font-size: .8rem; color: var(--sedy); line-height: 1.35; }
+.pokladna-tip__cena .tl { margin-top: 12px; justify-self: start; }
+@media (max-width: 1020px) { .pokladna-tip { grid-template-columns: 170px 1fr; } .pokladna-tip__cena { grid-column: 1 / -1; } }
+@media (max-width: 600px) { .pokladna-tip { grid-template-columns: 1fr; padding: 18px; gap: 16px; } .pokladna-tip img { max-width: 200px; margin: 0 auto; } }
 @media (max-width: 1020px) {
   .pokladny { grid-template-columns: repeat(2, 1fr); }
   .pokladna:nth-child(n+3) { margin-top: 18px; }
